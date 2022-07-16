@@ -1,0 +1,24 @@
+.menu-title {
+    font-size: 1.2rem;
+}
+.main-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.main-col-1 {
+    flex:1
+}
+.main-col-2 {
+    flex:2
+}
+.main-block{
+    background-color: grey;
+    padding: 1;
+    margin:0.5rem;
+    border-radius: 0.5rem;
+}
+.main-row.center {
+    align-items: center;
+}
