@@ -1,0 +1,8 @@
+.item-img-small {
+    height: 12rem;
+    width: 12rem;
+    clip-path: circle();
+}
+.item-button {
+    margin-bottom: 20px !important;
+}

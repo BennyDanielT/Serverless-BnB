@@ -5,7 +5,8 @@ const Navbar = () => {
     return (
         <Nav className='Navbar'>
             <NavElement className='NavbarElement'><NavLink href="bookRooms">Book Rooms</NavLink></NavElement>
-            <NavElement><NavLink href="orderFood">Order Food</NavLink></NavElement>
+            <NavElement><NavLink href="order">Order Food</NavLink></NavElement>
+            <NavElement><NavLink href="notifications">Notifications</NavLink></NavElement>
             <NavElement><NavLink href="tourBooking">Tour Booking</NavLink></NavElement>
             <NavElement><NavLink href="reports">Reports</NavLink></NavElement>
             <NavElement><NavLink href="visualization">Visualization</NavLink></NavElement>

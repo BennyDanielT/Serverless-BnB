@@ -1,0 +1,22 @@
+.basket-title {
+    font-size: 1.2rem;
+}
+.basket-row {
+    display: flex;
+    justify-content: space-between;
+}
+.basket-col-1 {
+    flex:1
+}
+.basket-col-2 {
+    flex:2
+}
+.basket-block{
+    background-color: grey;
+    padding: 1;
+    margin:0.5rem;
+    border-radius: 0.5rem;
+}
+.basket-row.center {
+    align-items: center;
+}
