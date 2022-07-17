@@ -5,8 +5,8 @@ import ChatBotContainer from './pages/ChatBotContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './components/Menu/Menu';
 import Notifications from './components/Menu/Notifications/Notifications';
-import BookRoom from './pages/BookRoom';
-import Visualization from './pages/Visualization';
+import BookRoom from './components/Rooms/BookRoom';
+import Visualization from './components/Visualizations/Visualization';
 function App() {
   return (
     <Router>
