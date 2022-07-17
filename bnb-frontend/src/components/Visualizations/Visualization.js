@@ -4,12 +4,13 @@ const Visualization = () => {
   return (
     <div>
       <Navbar />
-      <header>
-        <h1>
-          Welcome to Serverless BnB! Here're some interesting charts for your
-          perusal!
-        </h1>
-      </header>
+      <div className='header'>
+        <div className='info'>
+          <h2>Welcome to the Visualizations Page</h2>
+          <h3>Here're some interesting charts for your perusal!</h3>
+        </div>
+      </div>
+
       <iframe
         width='100%'
         height='920'
