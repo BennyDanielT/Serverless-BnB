@@ -1,0 +1,131 @@
+.menu-title {
+  font-size: 1.2rem;
+}
+.main-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.main-col-1 {
+  flex: 1;
+}
+.main-col-2 {
+  flex: 2;
+}
+.main-block {
+  background-color: grey;
+  padding: 1;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+.main-row.center {
+  align-items: center;
+}
+
+/* h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 100px;
+} */
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
+html,
+body {
+  margin: 0;
+  height: 120%;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.header {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  height: 50vw;
+  min-height: 200px;
+  max-height: 350px;
+  min-width: 300px;
+  color: #eee;
+}
+.header:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12) 40%,
+    rgba(27, 32, 48, 1) 100%
+  );
+}
+.header:before {
+  content: '';
+  width: 100%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  /* scale(1.0, 1.0); */
+  transform: translateZ(0);
+  background: #1b2030
+    url(https://media.gettyimages.com/photos/luxury-construction-hotel-with-swimming-pool-at-sunset-picture-id903417402?s=2048x2048)
+    50% 0 no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  animation: grow 100s linear 10ms infinite;
+  transition: all 0.4s ease-in-out;
+  z-index: -2;
+}
+.header a {
+  color: #eee;
+}
+
+.sides,
+.info {
+  flex: 0 0 auto;
+  width: 50%;
+}
+.info {
+  width: 100%;
+  padding: 15% 10% 0 10%;
+  text-align: center;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.info h3,
+.meta {
+  font-size: 1.2em;
+}
+.meta {
+  font-style: italic;
+}
+@keyframes grow {
+  0% {
+    transform: scale(1) translateY(0px);
+  }
+  50% {
+    transform: scale(1.2) translateY(-400px);
+  }
+}
+
+.btn {
+  color: #333;
+  border: 2px solid;
+  border-radius: 3px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  font-weight: 600;
+}
