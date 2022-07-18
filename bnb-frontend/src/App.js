@@ -5,7 +5,6 @@ import ChatBotContainer from './pages/ChatBotContainer';
 import Registration from './pages/Registration'
 import Login from './pages/login';
 import Qna_cipher from './pages/qna_cipher'
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './components/Menu/Menu';
 import Notifications from './components/Menu/Notifications/Notifications';
