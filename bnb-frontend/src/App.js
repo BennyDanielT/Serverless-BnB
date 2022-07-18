@@ -10,6 +10,7 @@ import Menu from './components/Menu/Menu';
 import Notifications from './components/Menu/Notifications/Notifications';
 import BookRoom from './components/Rooms/BookRoom';
 import Visualization from './components/Visualizations/Visualization';
+import AddFeedback from "./pages/CustomerFeedback/AddFeedback";
 function App() {
   return (
     <Router>
@@ -19,12 +20,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/chat" element={<ChatBotContainer />} />
         <Route path="/qna_cipher" element={<Qna_cipher />} />
-        <Route path='/' element={<Home />} />
-        <Route path='/chat' element={<ChatBotContainer />} />
-        <Route path='/order' element={<Menu />} />
-        <Route path='/notifications' element={<Notifications />} />
-        <Route path='/book-rooms' element={<BookRoom />} />
-        <Route path='/visualizations' element={<Visualization />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/chat" element={<ChatBotContainer />} />
+        <Route path="/order" element={<Menu />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/book-rooms" element={<BookRoom />} />
+        <Route path="/visualizations" element={<Visualization />} />
+        <Route path="/feedback" element={<AddFeedback />} />
       </Routes>
     </Router>
   );
