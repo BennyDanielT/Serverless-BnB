@@ -11,7 +11,8 @@ const Chatbot = (props) => {
         e.preventDefault();
         console.log(userMsg);
         let userRequest = {
-            "text": userMsg
+            "text": userMsg,
+            "username": "test"
         }
         let userReply = {"message":userRequest.text, "author": "You"}
         msgHistory.push(userReply);
