@@ -6,7 +6,7 @@ export default function Room(props) {
   // console.log(typeof room.available_on._seconds);
   // console.log(new Date(room.available_on._seconds));
   let availableDate = new Date(room.available_on._seconds * 1000);
-  console.log(availableDate);
+  // console.log(availableDate);
   return (
     <div>
       <img className='item-img-small' src={room.image_url} alt=''></img>
@@ -17,17 +17,17 @@ export default function Room(props) {
         Available On: {availableDate.toLocaleString('en-US')}
       </h4>
       <h4>Capacity: {room.capacity}</h4>
-      {/* <div className='button-container'>
+      <div className='button-container'>
         <Button
           className='item-button'
-          variant='primary'
+          // variant='primary'
           size='sm'
           // onClick={() => onAdd(item)}
         >
           {' '}
-          Add to Cart{' '}
+          Book Now{' '}
         </Button>
-      </div> */}
+      </div>
     </div>
   );
 }

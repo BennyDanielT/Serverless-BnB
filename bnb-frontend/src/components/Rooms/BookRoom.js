@@ -20,7 +20,11 @@ const BookRoom = () => {
   const getAvailableRooms = async () => {
     try {
       const roomsAPI = await getRooms();
-      setRooms(roomsAPI.data.data);
+      const filteredtValues = roomsAPI.data.data.filter((value) => {
+        return value.is_available === 'true';
+      });
+      setRooms(filteredtValues);
+      // setRooms(roomsAPI.data.data);
       // console.log(roomsAPI.data.data);
     } catch (error) {
       console.log(error.message);
@@ -31,10 +35,16 @@ const BookRoom = () => {
   }, []);
   console.log(roomsData);
 
-  let roomsReact = roomsData.map((r) => (
-    // <h1>{room.room_no}</h1>
-    <Room room={r}></Room>
-  ));
+  // const filteredtValues = roomsData.filter((value) => {
+  //   // var start = new Date(startDate);
+  //   // start.setUTCHours(0, 0, 0, 0);
+  //   // var end = new Date(endDate);
+  //   // end.setUTCHours(23, 59, 59, 999);
+  //   return value.is_available == 'true';
+  // });
+
+  // setRooms(filteredtValues);
+
   return (
     <div>
       <Navbar />
@@ -49,7 +59,7 @@ const BookRoom = () => {
       </div>
       <div className='mt-5 p-5 d-flex'>
         <div className='mt-5 pt-5 d-flex justify-content-left'>
-          <Form className='block-example rounded mb-  border border-success'>
+          <Form className='block-example rounded border border-success'>
             <br></br>
             <div className='d-flex'>
               <div className='mx-auto'>
@@ -132,18 +142,6 @@ const BookRoom = () => {
           <main className='main-block main-col-2'>
             <div className='main-row'>
               {roomsData.map((room) => (
-                // <h1 key={r.room_no}>{r.room_no}</h1>
-                // <div>
-                //   <img
-                //     className='item-img-small'
-                //     src={room.image_url}
-                //     alt=''
-                //   ></img>
-                //   <h4>Room Type: {room.type}</h4>
-                //   <h4>Price: ${room.price}</h4>
-                //   {/* <h4>Available On: ${room.available_on}</h4> */}
-                //   <h4>Capacity: {room.capacity}</h4>
-                // </div>
                 <Room key={room.room_no} room={room}></Room>
               ))}
             </div>

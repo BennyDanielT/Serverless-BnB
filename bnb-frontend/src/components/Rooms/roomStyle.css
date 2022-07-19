@@ -8,4 +8,9 @@
 }
 .item-button {
   margin-bottom: 20px !important;
+  color: white;
+}
+
+.button-container {
+  align-items: center;
 }
