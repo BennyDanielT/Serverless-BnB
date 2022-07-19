@@ -12,6 +12,7 @@ const Visualization = () => {
       </div>
 
       <iframe
+        className='iframe'
         width='100%'
         height='920'
         src='https://datastudio.google.com/embed/reporting/5078cfe8-15f4-4cfd-befd-12e87f04b258/page/kb1xC'
