@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import './roomStyle.css';
 import { reservation } from '../../services/Room/room.service';
+import Swal from 'sweetalert2';
 export default function Room(props) {
   const { room } = props;
   const reservationRequest = {};
@@ -14,11 +15,23 @@ export default function Room(props) {
   let availableDate = new Date(room.available_on._seconds * 1000);
   const bookThisRoom = async (rm) => {
     try {
-      const bookRoomResponse = await reservation(reservationRequest);
-      if (bookRoomResponse.success) {
-        // navigate("/notifications");
+      // const bookRoomResponse = await reservation(reservationRequest);
+      if (false) {
+        Swal.fire(
+          'Reservation Processed!',
+          'Your desired room has been booked successfully',
+          'success',
+        );
       } else {
-        alert('Order not placed, please retry');
+        Swal.fire({
+          title: 'Error!',
+          text: 'Sorry, Your Reservation did not go through!',
+          icon: 'error',
+          showCancelButton: true,
+          showConfirmButton: false,
+          cancelButtonColor: '#d33',
+          cancelButtonText: 'Back',
+        });
       }
     } catch (error) {
       console.log(error.message);
