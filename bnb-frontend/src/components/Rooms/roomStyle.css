@@ -1,0 +1,16 @@
+.item-img-small {
+  height: 12rem;
+  width: 12rem;
+  clip-path: polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%);
+
+  margin-left: 4rem;
+  margin-top: 4rem;
+}
+.item-button {
+  margin-bottom: 20px !important;
+  color: white;
+}
+
+.button-container {
+  align-items: center;
+}

@@ -1,4 +1,4 @@
-.menu-title {
+/* .menu-title {
   font-size: 1.2rem;
 }
 .main-row {
@@ -21,14 +21,6 @@
 }
 .main-row.center {
   align-items: center;
-}
-
-/* h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 40px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 100px;
 } */
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
@@ -39,7 +31,28 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-.header {
+.main-row {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  flex-wrap: wrap;
+}
+
+.main-col-2 {
+  flex: 2;
+}
+.main-block {
+  background-color: #dddddd;
+  padding: 1;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.main-row.center {
+  align-items: center;
+}
+
+.header-r {
   position: relative;
   overflow: hidden;
   display: flex;
@@ -49,11 +62,11 @@ body {
   align-content: flex-start;
   height: 50vw;
   min-height: 200px;
-  max-height: 350px;
+  max-height: 400px;
   min-width: 300px;
-  color: #eee;
+  color: rgb(238, 238, 238);
 }
-.header:after {
+.header-r:after {
   content: '';
   width: 100%;
   height: 100%;
@@ -67,7 +80,7 @@ body {
     rgba(27, 32, 48, 1) 100%
   );
 }
-.header:before {
+.header-r:before {
   content: '';
   width: 100%;
   height: 200%;
@@ -80,7 +93,7 @@ body {
   /* scale(1.0, 1.0); */
   transform: translateZ(0);
   background: #1b2030
-    url(https://media.gettyimages.com/photos/luxury-construction-hotel-with-swimming-pool-at-sunset-picture-id903417402?s=2048x2048)
+    url(https://media.gettyimages.com/photos/aurora-over-kirkjufell-mountain-iceland-picture-id511561638?s=2048x2048)
     50% 0 no-repeat;
   background-size: 100%;
   background-attachment: fixed;
@@ -88,11 +101,10 @@ body {
   transition: all 0.4s ease-in-out;
   z-index: -2;
 }
-.header a {
+.header-r a {
   color: #eee;
 }
 
-.sides,
 .info {
   flex: 0 0 auto;
   width: 50%;
