@@ -90,7 +90,7 @@ function Notifications() {
   useEffect(() => {
     const getDataFromNotificationsApi = async () => {
       try {
-        const loggedInUser = JSON.parse(localStorage.getItem('email'));
+        const loggedInUser = localStorage.getItem('email');
         console.log(loggedInUser);
         if(!loggedInUser) {
           alert('Please login to view notifications');
