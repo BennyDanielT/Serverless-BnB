@@ -1,25 +1,25 @@
-.menu-title {
+.viz-title {
   font-size: 1.2rem;
 }
-.main-row {
+.viz-main-row {
   display: flex;
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
 }
-.main-col-1 {
+.viz-main-col-1 {
   flex: 1;
 }
-.main-col-2 {
+.viz-main-col-2 {
   flex: 2;
 }
-.main-block {
+.viz-main-block {
   background-color: grey;
   padding: 1;
   margin: 0.5rem;
   border-radius: 0.5rem;
 }
-.main-row.center {
+.viz-main-row.center {
   align-items: center;
 }
 
@@ -32,14 +32,14 @@
 } */
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
-html,
+/*html,
 body {
   margin: 0;
   height: 120%;
   font-family: 'Josefin Sans', sans-serif;
-}
+}*/
 
-.header {
+.viz-header {
   position: relative;
   overflow: hidden;
   display: flex;
@@ -53,7 +53,7 @@ body {
   min-width: 300px;
   color: #eee;
 }
-.header:after {
+.viz-header:after {
   content: '';
   width: 100%;
   height: 100%;
@@ -67,7 +67,7 @@ body {
     rgba(27, 32, 48, 1) 100%
   );
 }
-.header:before {
+.viz-header:before {
   content: '';
   width: 100%;
   height: 200%;
@@ -88,27 +88,27 @@ body {
   transition: all 0.4s ease-in-out;
   z-index: -2;
 }
-.header a {
+.viz-header a {
   color: #eee;
 }
 
-.sides,
-.info {
+.viz-sides,
+.viz-info {
   flex: 0 0 auto;
   width: 50%;
 }
-.info {
+.viz-info {
   width: 100%;
   padding: 15% 10% 0 10%;
   text-align: center;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
-.info h3,
-.meta {
+.viz-info viz-h3,
+.viz-meta {
   font-size: 1.2em;
 }
-.meta {
+.viz-meta {
   font-style: italic;
 }
 @keyframes grow {
@@ -120,7 +120,7 @@ body {
   }
 }
 
-.btn {
+.viz-btn {
   color: #333;
   border: 2px solid;
   border-radius: 3px;

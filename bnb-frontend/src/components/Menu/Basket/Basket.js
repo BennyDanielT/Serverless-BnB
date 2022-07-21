@@ -9,9 +9,15 @@ export default function Basket(props) {
 
   const itemsPrice = cartItems.reduce((a,c)=>a + c.selling_price * c.qty,0);
   const handleOrder = async (orderCart) => {
+    const loggedInUser = localStorage.getItem('email');
+    console.log(loggedInUser);
+    if(!loggedInUser){
+       alert(' Login is Required for any purchase');
+       navigate("/login");
+    }
       const orderRequest = {};
       const order = [];
-      orderRequest['user_id'] = "preet";
+      orderRequest['user_id'] = loggedInUser;
       //orderRequest['user_id'] = localStorage.get();
       for(var i=0;i<cartItems.length;i++) {
         const item = cartItems[i];
