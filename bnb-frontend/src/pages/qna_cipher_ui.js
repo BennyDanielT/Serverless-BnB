@@ -6,8 +6,9 @@ import axios from 'axios';
 import { async } from "@firebase/util";
 import {useNavigate} from 'react-router-dom';
 import React, { useEffect, useState } from 'react'
+import "./style.css";
 
-const Qna_cipher = () => {
+const Qna_cipher_ui = () => {
     const navigate = useNavigate();
     const [email,setEmail] = useState("");
     const [question,setQuestion] = useState('')
@@ -16,7 +17,12 @@ const Qna_cipher = () => {
     const [userCipher,setUserCipher] = useState('')
     const [plaintext,setPlaintext] = useState('')
     const [verifycipher,setVerifycipher] = useState('')
+
     let x = ""
+    let firebaseurl = "https://us-central1-serverless-data-computing.cloudfunctions.net/getQnA"
+    let firebasedata = {
+      email: localStorage.getItem("email")
+    }
 
     const getQuestion = async(event) => {
         event.preventDefault();
@@ -26,20 +32,12 @@ const Qna_cipher = () => {
         //     setQuestion(doc.data()['question']);
         //     setAnswer(doc.data()['answer']);
         // });
-        const headers = {
-            "Content-Type": "text/json"
-        };
-        let firebaseurl = "https://us-central1-serverless-data-computing.cloudfunctions.net/getQnA"
-        let firebasedata = {
-          email: localStorage.getItem("email")
-        }
         console.log(firebasedata)
         console.log(firebaseurl)
-        await axios.post(firebaseurl,firebasedata, {
-          headers: headers
-        })
+        await axios.post(firebaseurl,firebasedata)
         .then((response) => {
-          console.log(response);
+            setQuestion(response.data.data.question);
+            setAnswer(response.data.data.answer)
         }, (error) => {
           console.error(error);
         });
@@ -106,24 +104,30 @@ const Qna_cipher = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <label>Security Question</label>
+        <div className="app">
+        <div className="login-form">
+        <label>Serverless BnB Security check</label>
+        <form onSubmit={onSubmit}>
+        <div className="input-container">
+        <label>Security Question</label>
                 <div>{question} ?</div>
                 <input onChange={(event) => setUseranswer(event.target.value)}></input>
-                <br></br>
                 <button onClick={getQuestion} type="button">Get Question</button>
-                <br></br>
+        </div>
+        <div className="input-container">
                 <button onClick={generatePlainText} type="button">Get plain text</button>
-                <br></br>
                 <div>{plaintext}</div>
+        </div>
+        <div className="input-container">
                 <label>Enter Cipher Text </label>
                 <input onChange={(event) => setUserCipher(event.target.value)}></input>
-                <br></br>
-                <button type="submit">Submit MFA</button>
-            </form>
         </div>
+                <button type="submit">Submit MFA</button>
+        </form>
+        <br></br>
+        </div>
+      </div>
     );
 };
 
-export default Qna_cipher;
+export default Qna_cipher_ui;
