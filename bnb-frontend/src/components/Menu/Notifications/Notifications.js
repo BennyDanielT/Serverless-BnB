@@ -138,7 +138,7 @@ function Notifications() {
                 <th>Status</th>
                 <th>Amount</th>
                 <th>Order Items</th>
-                <th className="td">Date</th>
+                <th>Date</th>
                 <th>Preparation Time</th>
               </tr>
             </thead>

@@ -1,6 +1,6 @@
 import axios from "axios";
 const menuUrl = "https://us-central1-serverless-data-computing.cloudfunctions.net/menu";
-const orderUrl = "http://us-central1-serverless-data-computing.cloudfunctions.net/hotelManagement";
+const orderUrl = "https://us-central1-serverless-data-computing.cloudfunctions.net/hotelManagement";
 const notificationsUrl = "https://us-central1-serverless-data-computing.cloudfunctions.net/notificationsProvider";
 export const getMenuItems = async() => {
     return await axios.post(menuUrl);
