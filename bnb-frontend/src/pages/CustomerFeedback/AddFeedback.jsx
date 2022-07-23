@@ -17,7 +17,7 @@ const initialState = {
 const AddFeedback = (props) => {
 
     // const userId = localStorage.getItem("email");
-    const userId = "virenmalavia242@gmail.com";
+    const userId = "paul.bradley@gmail.com";
 
     const [newPost, setNewPost] = useState(initialState);
     const [feedback, setFeedback] = useState("");
@@ -43,6 +43,11 @@ const AddFeedback = (props) => {
     });
 
     useEffect(() => {
+        if(!userId) {
+        //   alert('Please login to view notifications');
+        swal.fire('Login required!', 'Please Login before using this feature', 'warning');
+        navigate("/login");
+        }
         const post = { ...newPost, Email: userId };
         reset(post)
         setNewPost(post);
@@ -50,6 +55,10 @@ const AddFeedback = (props) => {
 
     const handleBack = () => {
         navigate("/");
+    };
+
+    const handleFeedback = () => {
+        navigate("/viewfeedbacks");
     };
 
     const handleOnChange = (e) => {
@@ -116,7 +125,6 @@ const AddFeedback = (props) => {
                                             alignItems: 'center',
                                         }}
                                     >
-
                                         <Grid container spacing={2}>
                                             <Grid item xs={12} textAlign="center">
                                                 <Typography>Please share your experience with us...</Typography>
@@ -138,15 +146,22 @@ const AddFeedback = (props) => {
                                             </Grid>
                                         </Grid>
                                     </Box>
-                                    
                                 </div>
                                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                     <Button
-                                        color="inherit"
+                                        color="error"
                                         onClick={handleBack}
                                         sx={{ mr: 1 }}
                                     >
                                         Back
+                                    </Button>
+                                    <Box sx={{ flex: '1 1 auto' }} />
+                                    <Button
+                                        color="success"
+                                        onClick={handleFeedback}
+                                        sx={{ mr: 1 }}
+                                    >
+                                        View All Feedbacks
                                     </Button>
                                     <Box sx={{ flex: '1 1 auto' }} />
                                     <Button onClick={onSubmit}>
