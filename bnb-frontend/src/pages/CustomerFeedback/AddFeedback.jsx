@@ -16,8 +16,8 @@ const initialState = {
 
 const AddFeedback = (props) => {
 
-    // const userId = localStorage.getItem("email");
-    const userId = "paul.bradley@gmail.com";
+    const userId = localStorage.getItem("email");
+    // const userId = "paul.bradley@gmail.com";
 
     const [newPost, setNewPost] = useState(initialState);
     const [feedback, setFeedback] = useState("");
