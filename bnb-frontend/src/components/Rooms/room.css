@@ -1,58 +1,58 @@
 /* .menu-title {
   font-size: 1.2rem;
 }
-.main-row {
+.room-main-row {
   display: flex;
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
 }
-.main-col-1 {
+.room-main-col-1 {
   flex: 1;
 }
-.main-col-2 {
+.room-main-col-2 {
   flex: 2;
 }
-.main-block {
+.room-main-block {
   background-color: grey;
   padding: 1;
   margin: 0.5rem;
   border-radius: 0.5rem;
 }
-.main-row.center {
+.room-main-row.center {
   align-items: center;
 } */
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
-html,
+/*html,
 body {
   margin: 0;
   height: 120%;
   font-family: 'Josefin Sans', sans-serif;
 }
-
-.main-row {
+*/
+.room-main-row {
   display: flex;
   justify-content: space-between;
   width: 75%;
   flex-wrap: wrap;
 }
 
-.main-col-2 {
+.room-main-col-2 {
   flex: 2;
 }
-.main-block {
+.room-main-block {
   background-color: #dddddd;
   padding: 1;
   margin: 0.5rem;
   border-radius: 0.5rem;
 }
 
-.main-row.center {
+.room-main-row.center {
   align-items: center;
 }
 
-.header-r {
+.room-header-r {
   position: relative;
   overflow: hidden;
   display: flex;
@@ -66,7 +66,7 @@ body {
   min-width: 300px;
   color: rgb(238, 238, 238);
 }
-.header-r:after {
+.room-header-r:after {
   content: '';
   width: 100%;
   height: 100%;
@@ -80,7 +80,7 @@ body {
     rgba(27, 32, 48, 1) 100%
   );
 }
-.header-r:before {
+.room-header-r:before {
   content: '';
   width: 100%;
   height: 200%;
@@ -101,26 +101,26 @@ body {
   transition: all 0.4s ease-in-out;
   z-index: -2;
 }
-.header-r a {
+.room-header-r a {
   color: #eee;
 }
 
-.info {
+.room-info {
   flex: 0 0 auto;
   width: 50%;
 }
-.info {
+.room-info {
   width: 100%;
   padding: 15% 10% 0 10%;
   text-align: center;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
-.info h3,
-.meta {
+.info room-h3,
+.room-meta {
   font-size: 1.2em;
 }
-.meta {
+.room-meta {
   font-style: italic;
 }
 @keyframes grow {
@@ -132,7 +132,7 @@ body {
   }
 }
 
-.btn {
+.room-btn {
   color: #333;
   border: 2px solid;
   border-radius: 3px;

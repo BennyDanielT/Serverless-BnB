@@ -6,9 +6,11 @@ import { Button, Table } from "react-bootstrap";
 import "./notifications.css";
 import { getNotifications } from "../../../services/Menu/kitchen.service";
 import Navbar from "../../Navbar/Navbar";
+import {useNavigate} from "react-router-dom";
 import { Watch } from "react-loader-spinner";
 
 function Notifications() {
+  const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   //const [currentUser, setCurrentUser] = useState("");
@@ -88,7 +90,14 @@ function Notifications() {
   useEffect(() => {
     const getDataFromNotificationsApi = async () => {
       try {
-        const user = "preet";
+        const loggedInUser = localStorage.getItem('email');
+        console.log(loggedInUser);
+        if(!loggedInUser) {
+          alert('Please login to view notifications');
+          navigate("/login");
+        }
+
+        const user = loggedInUser;
         // setCurrentUser(user);
         //JSON.parse(localStorage.getItem('user_id'));
         const notificationsFromApi = await getNotifications(user);
@@ -129,7 +138,7 @@ function Notifications() {
                 <th>Status</th>
                 <th>Amount</th>
                 <th>Order Items</th>
-                <th className="td">Date</th>
+                <th>Date</th>
                 <th>Preparation Time</th>
               </tr>
             </thead>
