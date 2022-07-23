@@ -30,7 +30,8 @@ const Login = () =>{
                 navigate(`/qna_cipher`);
             },
             onFailure: (err) =>{
-                alert("onfailure : ",err);
+                console.log(err)
+                alert("onfailure : Password incorrect",err);
             },
             newPasswordRequired:(data) =>{
                 alert("newpasswordrequired", data);

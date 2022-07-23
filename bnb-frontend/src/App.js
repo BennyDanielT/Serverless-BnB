@@ -14,6 +14,7 @@ import Notifications from './components/Menu/Notifications/Notifications';
 import BookRoom from './components/Rooms/BookRoom';
 import Visualization from './components/Visualizations/Visualization';
 import AddFeedback from "./pages/CustomerFeedback/AddFeedback";
+import Reports from "./pages/Reports";
 function App() {
   return (
     <Router>
@@ -33,6 +34,7 @@ function App() {
         <Route path="/book-rooms" element={<BookRoom />} />
         <Route path="/visualizations" element={<Visualization />} />
         <Route path="/feedback" element={<AddFeedback />} />
+        <Route path="/reports" element={<Reports />} />
       </Routes>
     </Router>
   );
