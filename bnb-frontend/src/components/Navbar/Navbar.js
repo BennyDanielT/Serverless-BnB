@@ -58,6 +58,9 @@ const Navbar = () => {
       <NavElement>
         <NavLink onClick={onLogout}>Logout</NavLink>
       </NavElement>
+      <NavElement>
+        <NavLink href='chat'>Chat Support</NavLink>
+      </NavElement>
     </Nav>
   );
 };

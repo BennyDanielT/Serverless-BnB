@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import ChatBotContainer from './pages/ChatBotContainer';
+import ChatBotContainer from './pages/Chatbot/ChatBotContainer';
 import Registration from './pages/Registration'
 import Registrationui from './pages/Registrationui'
 import Login from './pages/login';
@@ -14,6 +14,7 @@ import Notifications from './components/Menu/Notifications/Notifications';
 import BookRoom from './components/Rooms/BookRoom';
 import Visualization from './components/Visualizations/Visualization';
 import AddFeedback from "./pages/CustomerFeedback/AddFeedback";
+
 function App() {
   return (
     <Router>
