@@ -1,34 +1,26 @@
-.viz-title {
+/* .menu-title {
   font-size: 1.2rem;
 }
-.viz-main-row {
+.room-main-row {
   display: flex;
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
 }
-.viz-main-col-1 {
+.room-main-col-1 {
   flex: 1;
 }
-.viz-main-col-2 {
+.room-main-col-2 {
   flex: 2;
 }
-.viz-main-block {
+.room-main-block {
   background-color: grey;
   padding: 1;
   margin: 0.5rem;
   border-radius: 0.5rem;
 }
-.viz-main-row.center {
+.room-main-row.center {
   align-items: center;
-}
-
-/* h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 40px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 100px;
 } */
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
@@ -37,9 +29,30 @@ body {
   margin: 0;
   height: 120%;
   font-family: 'Josefin Sans', sans-serif;
-}*/
+}
+*/
+.room-main-row {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  flex-wrap: wrap;
+}
 
-.viz-header {
+.room-main-col-2 {
+  flex: 2;
+}
+.room-main-block {
+  background-color: #dddddd;
+  padding: 1;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.room-main-row.center {
+  align-items: center;
+}
+
+.room-header-r {
   position: relative;
   overflow: hidden;
   display: flex;
@@ -49,11 +62,11 @@ body {
   align-content: flex-start;
   height: 50vw;
   min-height: 200px;
-  max-height: 350px;
+  max-height: 400px;
   min-width: 300px;
-  color: #eee;
+  color: rgb(238, 238, 238);
 }
-.viz-header:after {
+.room-header-r:after {
   content: '';
   width: 100%;
   height: 100%;
@@ -67,7 +80,7 @@ body {
     rgba(27, 32, 48, 1) 100%
   );
 }
-.viz-header:before {
+.room-header-r:before {
   content: '';
   width: 100%;
   height: 200%;
@@ -80,7 +93,7 @@ body {
   /* scale(1.0, 1.0); */
   transform: translateZ(0);
   background: #1b2030
-    url(https://media.gettyimages.com/photos/luxury-construction-hotel-with-swimming-pool-at-sunset-picture-id903417402?s=2048x2048)
+    url(https://media.gettyimages.com/photos/aurora-over-kirkjufell-mountain-iceland-picture-id511561638?s=2048x2048)
     50% 0 no-repeat;
   background-size: 100%;
   background-attachment: fixed;
@@ -88,27 +101,26 @@ body {
   transition: all 0.4s ease-in-out;
   z-index: -2;
 }
-.viz-header a {
+.room-header-r a {
   color: #eee;
 }
 
-.viz-sides,
-.viz-info {
+.room-info {
   flex: 0 0 auto;
   width: 50%;
 }
-.viz-info {
+.room-info {
   width: 100%;
   padding: 15% 10% 0 10%;
   text-align: center;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
-.viz-info viz-h3,
-.viz-meta {
+.info room-h3,
+.room-meta {
   font-size: 1.2em;
 }
-.viz-meta {
+.room-meta {
   font-style: italic;
 }
 @keyframes grow {
@@ -120,7 +132,7 @@ body {
   }
 }
 
-.viz-btn {
+.room-btn {
   color: #333;
   border: 2px solid;
   border-radius: 3px;
