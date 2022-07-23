@@ -22,6 +22,9 @@ const Navbar = () => {
       <NavElement>
         <NavLink href='visualizations'>Visualization</NavLink>
       </NavElement>
+      <NavElement>
+        <NavLink href='chat'>Chat Support</NavLink>
+      </NavElement>
     </Nav>
   );
 };
