@@ -16,6 +16,7 @@ import Visualization from "./components/Visualizations/Visualization";
 import AddFeedback from "./pages/CustomerFeedback/AddFeedback";
 import Reports from "./pages/Reports";
 import ViewFeedback from "./pages/CustomerFeedback/ViewFeedback";
+import TourBooking from "./pages/TourBooking";
 function App() {
   return (
     <Router>
@@ -37,6 +38,7 @@ function App() {
         <Route path="/feedback" element={<AddFeedback />} />
         <Route path="/reports" element={<Reports />} />
         <Route path="/viewfeedbacks" element={<ViewFeedback />} />
+        <Route path="/tourBooking" element={<TourBooking />} />
       </Routes>
     </Router>
   );
