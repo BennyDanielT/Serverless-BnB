@@ -3,8 +3,9 @@ import { Button } from 'react-bootstrap';
 import './roomStyle.css';
 import { reservation } from '../../services/Room/room.service';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 export default function Room(props) {
-  const { room } = props;
+  const { room, startDate, endDate, occupants, user } = props;
   const reservationRequest = {};
 
   // console.log(typeof room.available_on._seconds);
@@ -13,15 +14,25 @@ export default function Room(props) {
   // console.log(availableDate);
 
   let availableDate = new Date(room.available_on._seconds * 1000);
-  const bookThisRoom = async (rm) => {
+  reservationRequest['roomNo'] = room.room_no;
+  reservationRequest['price'] = room.price;
+  reservationRequest['startDate'] = startDate;
+  reservationRequest['endDate'] = endDate;
+  reservationRequest['occupants'] = occupants;
+  reservationRequest['userName'] = user;
+
+  let navigate = useNavigate();
+  const bookThisRoom = async () => {
     try {
-      // const bookRoomResponse = await reservation(reservationRequest);
-      if (false) {
+      const bookRoomResponse = await reservation(reservationRequest);
+      if (bookRoomResponse.success) {
+        // bookRoomResponse.success;
         Swal.fire(
           'Reservation Processed!',
           'Your desired room has been booked successfully',
           'success',
         );
+        navigate('/');
       } else {
         Swal.fire({
           title: 'Error!',
@@ -31,6 +42,9 @@ export default function Room(props) {
           showConfirmButton: false,
           cancelButtonColor: '#d33',
           cancelButtonText: 'Back',
+          background: '#fff',
+          backdrop:
+            'rgba(0,0,123,0.4) url("https://i.imgur.com/G0kYfKL.gif") left top no-repeat',
         });
       }
     } catch (error) {
@@ -40,7 +54,7 @@ export default function Room(props) {
 
   return (
     <div>
-      <img className='item-img-small' src={room.image_url} alt=''></img>
+      <img className='room-item-img-small' src={room.image_url} alt=''></img>
       <h3>Room Number: {room.room_no}</h3>
       <h4>Room Type: {room.type}</h4>
       <h4>Price: ${room.price}</h4>
@@ -48,12 +62,12 @@ export default function Room(props) {
         Available On: {availableDate.toLocaleString('en-US')}
       </h4>
       <h4>Capacity: {room.capacity}</h4>
-      <div className='button-container'>
+      <div className='room-button-container d-flex justify-content-center'>
         <Button
-          className='item-button'
+          className='room-item-button'
           // variant='primary'
           size='sm'
-          onClick={() => bookThisRoom(room)}
+          onClick={() => bookThisRoom()}
         >
           {' '}
           Book Now{' '}
