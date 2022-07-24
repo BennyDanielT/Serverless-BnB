@@ -32,7 +32,7 @@ const Loginui = () =>{
                 navigate(`/qna_cipherui`);
             },
             onFailure: (err) =>{
-                alert("onfailure : ",err);
+                alert(err);
             },
             newPasswordRequired:(data) =>{
                 alert("newpasswordrequired", data);
