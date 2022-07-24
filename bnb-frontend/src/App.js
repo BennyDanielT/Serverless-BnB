@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import ChatBotContainer from "./pages/ChatBotContainer";
+import ChatBotContainer from "./pages/Chatbot/ChatBotContainer";
 import Registration from "./pages/Registration";
 import Registrationui from "./pages/Registrationui";
 import Login from "./pages/login";
