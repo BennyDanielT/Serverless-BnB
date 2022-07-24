@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import NavigationBar from "../../components/Navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Container, CssBaseline } from '@mui/material';
@@ -7,33 +7,17 @@ import axios from 'axios';
 import { TextField, Grid, Typography } from '@mui/material';
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-
+import swal from 'sweetalert2';
 
 const initialState = {
     Feedback: '',
     Email: ''
 };
 
-// const useStyles = makeStyles((theme) => ({
-//     paper: {
-//         width: "100%",
-//         backgroundColor: "#fff",
-//         transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-//         padding: "1rem",
-//         boxShadow: "rgb(100 116 139 / 12%) 0px 10px 15px",
-//         borderRadius: 8,
-//     },
-//     fileInput: {
-//         width: '97%',
-//         margin: '10px 0',
-//     },
-// }));
-
 const AddFeedback = (props) => {
 
-    // const userId = localStorage.getItem("userId");
-    const userId = "virenmalavia242@gmail.com"; 
+    const userId = localStorage.getItem("email");
+    // const userId = "paul.bradley@gmail.com";
 
     const [newPost, setNewPost] = useState(initialState);
     const [feedback, setFeedback] = useState("");
@@ -53,14 +37,17 @@ const AddFeedback = (props) => {
     const {
         register,
         formState: { errors },
-        handleSubmit,
         reset,
-        trigger,
     } = useForm({
         // resolver: yupResolver(PropertySchema),
     });
 
     useEffect(() => {
+        if(!userId) {
+        //   alert('Please login to view notifications');
+        swal.fire('Login required!', 'Please Login before using this feature', 'warning');
+        navigate("/login");
+        }
         const post = { ...newPost, Email: userId };
         reset(post)
         setNewPost(post);
@@ -70,33 +57,49 @@ const AddFeedback = (props) => {
         navigate("/");
     };
 
+    const handleFeedback = () => {
+        navigate("/viewfeedbacks");
+    };
+
     const handleOnChange = (e) => {
         setFeedback(e.target.value);
     }
 
     const onSubmit = () => {
-        const postFeedback = { ...newPost, Feedback: feedback}
-        console.log("postFeedback: " + postFeedback.Feedback);
+        console.log(feedback);
+        if(feedback){
+            const postFeedback = { ...newPost, Feedback: feedback}
+            console.log("postFeedback: " + postFeedback.Feedback);
             axios.post("https://us-central1-serverless-data-computing.cloudfunctions.net/feedback-sentiment-analysis", postFeedback).then((res) => {
                 console.log("response data: " + res.data);
-                if(res.data.userFeedbackData){
+                if(res.data.success){
                     setSentimentScore(res.data.userFeedbackData.Score);
                     setPolarity(res.data.userFeedbackData.Polarity);
                     console.log("Sentiment Score: " + sentimentScore);
                     console.log("Polarity: " + res.data.userFeedbackData.Polarity);
-                    toast.success("Your feedback was successfully submitted!");
+                    if(res.data.userFeedbackData.Polarity === "Positive"){
+                        swal.fire('Feedback Submitted!', 'This review made our day. Thank your for your great feedback.', 'success')
+                    } else if(res.data.userFeedbackData.Polarity === "Negative") {
+                        swal.fire('Feedback Submitted!', 'Thank you for bringing this to our attention. We’re sorry you had a bad experience. We’ll strive to do better.', 'success')
+                    } else if(res.data.userFeedbackData.Polarity === "Neutral") {
+                        swal.fire('Feedback Submitted!', 'Thank you so much for sharing your experience with us. We hope to see you again soon.', 'success')
+                    }
                     reset();
                 } else {
-                    toast.error("Someting went wrong!");
+                    swal.fire('Someting went wrong!', 'Please enter Feedback before submiting.', 'warning');
                 }
             }).catch((err) => {
                 console.log(err?.response?.data?.message);
+                swal.fire('Someting went wrong!', 'Please try again later.', 'error');
             })
+        } else {
+            swal.fire('Someting went wrong!', 'Please enter Feedback before submiting.', 'warning');
+        }
     };
 
     return (
         <>
-            <NavigationBar />
+            <Navbar />
             
             <div className="feedback-heading" style={{ width: "85%", margin: "3rem auto" }}>
                 <h1>Customer Feedback</h1>
@@ -108,7 +111,6 @@ const AddFeedback = (props) => {
                         <React.Fragment>
                             <Container component="main" maxWidth="sm" sx={{ mt: 5 }}>
                                 <CssBaseline />
-                                {/* <div className={classes.paper} > */}
                                 <div style={{width: "100%",
                                     backgroundColor: "#fff",
                                     transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
@@ -123,7 +125,6 @@ const AddFeedback = (props) => {
                                             alignItems: 'center',
                                         }}
                                     >
-
                                         <Grid container spacing={2}>
                                             <Grid item xs={12} textAlign="center">
                                                 <Typography>Please share your experience with us...</Typography>
@@ -148,11 +149,19 @@ const AddFeedback = (props) => {
                                 </div>
                                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                     <Button
-                                        color="inherit"
+                                        color="error"
                                         onClick={handleBack}
                                         sx={{ mr: 1 }}
                                     >
                                         Back
+                                    </Button>
+                                    <Box sx={{ flex: '1 1 auto' }} />
+                                    <Button
+                                        color="success"
+                                        onClick={handleFeedback}
+                                        sx={{ mr: 1 }}
+                                    >
+                                        View All Feedbacks
                                     </Button>
                                     <Box sx={{ flex: '1 1 auto' }} />
                                     <Button onClick={onSubmit}>
@@ -160,7 +169,6 @@ const AddFeedback = (props) => {
                                     </Button>
                                 </Box>
                             </Container>
-
                         </React.Fragment>
                 </Box>
             </Grid>
