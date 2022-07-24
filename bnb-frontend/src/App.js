@@ -1,20 +1,21 @@
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import ChatBotContainer from './pages/Chatbot/ChatBotContainer';
-import Registration from './pages/Registration'
-import Registrationui from './pages/Registrationui'
-import Login from './pages/login';
-import Loginui from './pages/loginui';
-import Qna_cipher from './pages/qna_cipher'
-import Qna_cipher_ui from './pages/qna_cipher_ui'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Menu from './components/Menu/Menu';
-import Notifications from './components/Menu/Notifications/Notifications';
-import BookRoom from './components/Rooms/BookRoom';
-import Visualization from './components/Visualizations/Visualization';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import ChatBotContainer from "./pages/ChatBotContainer";
+import Registration from "./pages/Registration";
+import Registrationui from "./pages/Registrationui";
+import Login from "./pages/login";
+import Loginui from "./pages/loginui";
+import Qna_cipher from "./pages/qna_cipher";
+import Qna_cipher_ui from "./pages/qna_cipher_ui";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Menu from "./components/Menu/Menu";
+import Notifications from "./components/Menu/Notifications/Notifications";
+import BookRoom from "./components/Rooms/BookRoom";
+import Visualization from "./components/Visualizations/Visualization";
 import AddFeedback from "./pages/CustomerFeedback/AddFeedback";
-
+import Reports from "./pages/Reports";
+import ViewFeedback from "./pages/CustomerFeedback/ViewFeedback";
 function App() {
   return (
     <Router>
@@ -34,6 +35,8 @@ function App() {
         <Route path="/book-rooms" element={<BookRoom />} />
         <Route path="/visualizations" element={<Visualization />} />
         <Route path="/feedback" element={<AddFeedback />} />
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/viewfeedbacks" element={<ViewFeedback />} />
       </Routes>
     </Router>
   );

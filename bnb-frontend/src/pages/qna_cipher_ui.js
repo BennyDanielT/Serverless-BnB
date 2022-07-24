@@ -14,7 +14,7 @@ const Qna_cipher_ui = () => {
     const [question,setQuestion] = useState('')
     const [answer,setAnswer] = useState('')
     const [useranswer,setUseranswer] = useState('')
-    const [userCipher,setUserCipher] = useState('')
+    const [userCipher,setUserCipher] = useState('x')
     const [plaintext,setPlaintext] = useState('')
     const [verifycipher,setVerifycipher] = useState('')
 
@@ -25,7 +25,7 @@ const Qna_cipher_ui = () => {
     }
 
     const getQuestion = async(event) => {
-        event.preventDefault();
+        // event.preventDefault();
         // const q = query(collection(db, "user_details"), where("email", "==", localStorage.getItem('email')));
         // const querySnapshot = await getDocs(q);
         // querySnapshot.forEach((doc) => {
@@ -45,8 +45,9 @@ const Qna_cipher_ui = () => {
 
     const onSubmit = async(event) =>{
         event.preventDefault();     
-        await checkCipher()
         if(answer===useranswer){
+            await getQuestion()
+            await checkCipher()
             console.log(verifycipher)
             if(x==="true")
             {
