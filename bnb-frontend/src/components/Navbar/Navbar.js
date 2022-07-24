@@ -53,6 +53,9 @@ const Navbar = () => {
         <NavLink href="feedback">Feedback</NavLink>
       </NavElement>
       <NavElement>
+        <NavLink href="chat">Chat</NavLink>
+      </NavElement>
+      <NavElement>
         <NavLink onClick={onLogout}>Logout</NavLink>
       </NavElement>
     </Nav>
