@@ -1,16 +1,29 @@
 import * as React from 'react';
 import Navbar from './../components/Navbar/Navbar'
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 
 
 function TourBooking() {
+
+
 
     var totalPeople = React.useRef(0);
     var tourLength = React.useRef(0);
     var spreference = React.useRef(0);
     var papreference = React.useRef(0);
     var startDate = React.useRef(new Date());
+    const navigate = useNavigate();
+
+    React.useEffect(() => {
+        const user = localStorage.getItem('email');
+        if(user == null){
+         navigate('/loginui');
+         return;
+        }
+       });
+     
 
     function setPeople(event){
         totalPeople.current = event.target.value;
