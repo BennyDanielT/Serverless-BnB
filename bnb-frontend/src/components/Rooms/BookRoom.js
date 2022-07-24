@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { Button, Table } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
-import Dropdown from 'react-bootstrap/Dropdown';
 import Form from 'react-bootstrap/Form';
 import Room from './room';
 
@@ -26,21 +25,13 @@ const BookRoom = () => {
   const [selected, setSelected] = useState(options[0].value);
 
   const handleChange = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setSelected(event.target.value);
   };
 
   const getAvailableRooms = async () => {
     try {
       const roomsAPI = await getRooms();
-      // const filteredtValues = roomsAPI.data.data.filter((value) => {
-      //   let occupants = minAdults+minChild;
-      //   return (
-      //     value.is_available === 'true'
-      //       &&
-      //      value.capacity<=occupants);
-      // });
-      // setRooms(filteredtValues);
       setRooms(roomsAPI.data.data);
       setAllRooms(roomsAPI.data.data);
       // console.log(roomsAPI.data.data);
@@ -52,28 +43,39 @@ const BookRoom = () => {
     getAvailableRooms();
     // updateData();
   }, []);
-  console.log(roomsData);
+  // console.log(roomsData);
   // console.log(typeof(roomsData[0].capacity));
 
   const updateData = () => {
+    // console.log(startDate);
+    // console.log(roomsData[1].available_on);
+    // console.log(new Date(roomsData[1].available_on._seconds * 1000));
+    // console.log(roomsData[1].available_on._seconds * 1000 > startDate);
+
     const filteredtValues = allRooms.filter((value) => {
       let occupants = parseInt(minAdults) + parseInt(minChild);
-      console.log(occupants);
+      let nextAvailableDate = new Date(value.available_on._seconds * 1000);
+      // console.log(occupants);
+      // console.log(value.available_on._seconds);
+      console.log('STARTDATE ', startDate);
+      console.log('NXTAVDATE ', nextAvailableDate);
+      console.log(nextAvailableDate < startDate);
       return (
-        value.is_available === 'true' &&
+        // value.nextAvailableDate <= startDate &&
         value.capacity >= occupants &&
-        value.type === selected
+        value.type === selected &&
+        nextAvailableDate <= startDate
       );
     });
     setRooms(filteredtValues);
   };
-  console.log(roomsData);
+  // console.log(roomsData);
 
   return (
     <div>
       <Navbar />
-      <div className='header-r'>
-        <div className='info'>
+      <div className='room-header-r'>
+        <div className='room-info'>
           <h2>Welcome to our Bed 'N' Breakfast site</h2>
           <h3>
             Due to Summer hours, our room availabilities are low. Please find
@@ -162,7 +164,13 @@ const BookRoom = () => {
         <main className='main-block main-col-2'>
           <div className='main-row'>
             {roomsData.map((room) => (
-              <Room key={room.room_no} room={room}></Room>
+              <Room
+                key={room.room_no}
+                room={room}
+                startDate={startDate}
+                endDate={endDate}
+                occupants={parseInt(minAdults) + parseInt(minChild)}
+              ></Room>
             ))}
           </div>
         </main>
@@ -173,3 +181,7 @@ const BookRoom = () => {
 };
 
 export default BookRoom;
+
+// {room['startDate'] = {startDate},
+//               room['endDate'] ={endDate},
+//               room['occupants'] ={occupants};}

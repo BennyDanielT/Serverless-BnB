@@ -4,8 +4,8 @@ const Visualization = () => {
   return (
     <div>
       <Navbar />
-      <div className='header'>
-        <div className='info'>
+      <div className='viz-header'>
+        <div className='viz-info'>
           <h2>Welcome to the Visualizations Page</h2>
           <h3>Here're some interesting charts for your perusal!</h3>
         </div>
