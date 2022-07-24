@@ -58,9 +58,9 @@ export default function Room(props) {
       <h3>Room Number: {room.room_no}</h3>
       <h4>Room Type: {room.type}</h4>
       <h4>Price: ${room.price}</h4>
-      <h4 key={room.room_no}>
+      {/* <h4 key={room.room_no}>
         Available On: {availableDate.toLocaleString('en-US')}
-      </h4>
+      </h4> */}
       <h4>Capacity: {room.capacity}</h4>
       <div className='room-button-container d-flex justify-content-center'>
         <Button
