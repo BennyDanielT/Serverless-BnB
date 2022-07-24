@@ -89,3 +89,12 @@
 //     });
 //   });
 // };
+
+import { useNavigate } from "react-router-dom";
+  const navigate = useNavigate();
+const loggedInUser = localStorage.getItem('email');
+    console.log(loggedInUser);
+    if(!loggedInUser){
+       alert(' Login is Required for any purchase');
+       navigate("/login");
+    }

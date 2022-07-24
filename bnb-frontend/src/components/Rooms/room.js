@@ -5,7 +5,7 @@ import { reservation } from '../../services/Room/room.service';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 export default function Room(props) {
-  const { room, startDate, endDate, occupants } = props;
+  const { room, startDate, endDate, occupants, user } = props;
   const reservationRequest = {};
 
   // console.log(typeof room.available_on._seconds);
@@ -19,7 +19,7 @@ export default function Room(props) {
   reservationRequest['startDate'] = startDate;
   reservationRequest['endDate'] = endDate;
   reservationRequest['occupants'] = occupants;
-  reservationRequest['userName'] = 'Danny Neel';
+  reservationRequest['userName'] = user;
 
   let navigate = useNavigate();
   const bookThisRoom = async () => {

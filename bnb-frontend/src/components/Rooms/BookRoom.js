@@ -7,6 +7,8 @@ import { Button, Table } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import Form from 'react-bootstrap/Form';
 import Room from './room';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const BookRoom = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -23,6 +25,17 @@ const BookRoom = () => {
     { value: 'suite', label: 'Suite' },
   ];
   const [selected, setSelected] = useState(options[0].value);
+  const navigate = useNavigate();
+  const loggedInUser = localStorage.getItem('email');
+  console.log(loggedInUser);
+  if (!loggedInUser) {
+    Swal.fire(
+      'Please Login!',
+      'Only registered members can book rooms!',
+      'error',
+    );
+    navigate('/loginui');
+  }
 
   const handleChange = (event) => {
     // console.log(event.target.value);
@@ -170,6 +183,7 @@ const BookRoom = () => {
                 startDate={startDate}
                 endDate={endDate}
                 occupants={parseInt(minAdults) + parseInt(minChild)}
+                user={loggedInUser}
               ></Room>
             ))}
           </div>
