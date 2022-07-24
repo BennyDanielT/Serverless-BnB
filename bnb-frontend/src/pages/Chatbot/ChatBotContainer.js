@@ -2,7 +2,9 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Chatbot from "./Chatbot";
-import { ChatBubble, ChatBotWrapper, Divider } from "./ChatBotContainer.style";
+import { Navigate } from "react-router-dom";
+import { useRef } from "react";
+import { ChatBubble, ChatBotWrapper, Divider, FlexWrapper, Messages } from "./ChatBotContainer.style";
 
 class ChatBotContainer extends React.Component {
 
@@ -10,7 +12,14 @@ class ChatBotContainer extends React.Component {
     super(props);
     this.state = { messages: [] };
     this.processNewResponse = this.processNewResponse.bind(this);
+    this.scrollRef = React.createRef();
   }
+
+  // componentDidMount() {
+  //   if(localStorage.getItem("email") !== ""){
+  //     <Navigate to="/loginui" replace={true} />
+  //   }
+  // }
 
   processNewResponse(newResponse) {
     const { messages } = this.state;
@@ -18,18 +27,24 @@ class ChatBotContainer extends React.Component {
     msgCopy.push(newResponse);
     this.setState({ messages: msgCopy });
   }
+  
+  executeScroll = () => this.scrollRef.current.scrollIntoView();
 
+  componentDidUpdate(prevProps, prevState) {
+    this.executeScroll();
+  }
 
   render() {
-    console.log(this.state.messages);
+    const { messages } = this.state;
     return (
-      <div>
+      <FlexWrapper>
         <Navbar />
         <ChatBotWrapper>
           {
-            this.state?.messages.map((message, i) => (
+            messages.map((message, i) => (
               <div>
-                <ChatBubble>
+                <ChatBubble ref={ i === messages.length - 1 && this.scrollRef}>
+                {/* <ChatBubble> */}
                   <span className="author" key={i}>{message.author}: </span>
                   {message.message}
                 </ChatBubble>
@@ -40,7 +55,7 @@ class ChatBotContainer extends React.Component {
         </ChatBotWrapper>
 
         <Chatbot getNewResponse={this.processNewResponse} />
-      </div>
+      </FlexWrapper>
     );
   }
 }

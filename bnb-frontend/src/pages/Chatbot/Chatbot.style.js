@@ -8,6 +8,7 @@ padding: 14px 20px;
 margin: 8px 0;
 border-radius: 4px;
 bottom: 0px;
+height: 50px;
 `;
 
 export const Button = styled.button`
@@ -25,14 +26,14 @@ cursor: pointer;
 export const InputContainer = styled.div`
 background-color: #ffffff;
 border-radius: 5px;
-padding: 10px 10px 10px 10px;
+padding: 10px 10px 0px 10px;
 margin: 10px 0;
 max-width: 100%;
-max-height: 20%;
+max-height: 50%;
 display: flex;
 flex-direction: row;
-position: absolute;
-bottom: 0;
+//position: fixed;
+//bottom: 0;
 width: 100%;
 `;
 

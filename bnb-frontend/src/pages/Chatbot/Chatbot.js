@@ -12,7 +12,6 @@ const Chatbot = (props) => {
         let email = localStorage.getItem("email");
         setUserMsg("");
         e.preventDefault();
-        console.log(userMsgCopy);
         let userRequest = {
             "text": userMsgCopy,
             "username": email
@@ -23,7 +22,6 @@ const Chatbot = (props) => {
         axios.post(recognizeTextURL, userRequest).then(res => {
             let botResponse = { "message": res.data.message, "author": "Bot" }
             msgHistory.push(botResponse);
-            console.log("Res" + res.data + " msg hist" + msgHistory);
             props.getNewResponse(botResponse);
 
         }).catch(err => {
