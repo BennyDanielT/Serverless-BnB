@@ -41,6 +41,22 @@ Below command runs the project in development mode. You can visit [http://localh
 npm start
 ```
 
+### Deployment
+The deployment of Serverless B&B is on Google Cloud Run, which allows us to run containerized application invocable by requests. We have packaged the image using Docker with base image of node and NGINX.
+
+Below command creates a build and pushes it to the Container Registry
+
+```
+gcloud builds submit --tag gcr.io/[YOUR_PROJECT_ID]/cra-cloud-run
+```
+
+Below command deploys the container image to CloudRun.
+
+```
+gcloud run deploy --image gcr.io/[YOUR_PROJECT_ID]/cra-cloud-run --platform managed
+```
+
+
 ## Built With
 
 - [React](https://reactjs.org/docs/getting-started.html) - A JS library for building UIs
